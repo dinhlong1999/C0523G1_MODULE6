@@ -1,70 +1,51 @@
-import "../homepages/assets/css/style.css"
-import "../../css/main.css"
-import {Header} from "./Header";
-import {Footer} from "./Footer";
+import {Header} from "../homepages/Header";
+import {Footer} from "../homepages/Footer";
+import "../../components/homepages/assets/css/style.css"
 import {NavLink} from "react-router-dom";
 
-export function HomePages() {
+export function Detail() {
 
 
-    return (
-        <>
+    return(
+        <div>
             <Header/>
-            <div className="slider">
-                <div
-                    id="carouselExampleControls"
-                    className="carousel slide"
-                    data-bs-ride="carousel"
-                >
-                    <div className="carousel-inner">
-                        <div className="carousel-item active">
-                            <img
-                                src="../../../../images/img_slide.png"
-                                className="d-block w-100"
-                                alt="..."
-                            />
+            <div className="container-fluid big-padding about-cover">
+                <div className="container">
+                    <div className="row about-row">
+                        <div className="col-md-6 no-padding image">
+                            <img src="../../../product/img.png" alt=""/>
                         </div>
-                        <div className="carousel-item">
-                            <img
-                                src="../../../../images/img_slide_1.png"
-                                className="d-block w-100"
-                                alt="..."
-                            />
-                        </div>
-                        <div className="carousel-item">
-                            <img
-                                src="../../../../images/img_slide_2.png"
-                                className="d-block w-100"
-                                alt="..."
-                            />
+                        <div className="col-md-6 detail ps-4 ">
+                            <h2>GIANT 2024 XTC ADV 24</h2>
+                            <h5 id={"px-5"}><b>Manufacturer:</b> <span>Giant</span> </h5>
+                            <h5 id={"px-5"}><b>Description:</b> <span>GIANT XTC ADV 3 2024 29 sở hữu thiết kế khung xe mạnh mẽ, cứng cáp đặc trưng với chất liệu Carbon, trọng lượng siêu nhẹ, hỗ trợ người lái cân bằng hệ thống lái dễ dàng khi đi trên địa hình hiểm trở. Nó có thể chống chịu va đập và các tác động xấu từ môi trường bên ngoài với lớp sơn tĩnh điện cao cấp.</span> </h5>
+                           <h5 id={"px-5"}><b> Price :</b> <span>7.500.000</span> </h5>
+                            <div className="row pt-2">
+                                <div className="col-md-6">
+                                    <a href="detail.html">
+                                        <button className="btn mb-2 fw-bold w-100 btn-danger">
+                                            Rent Now
+                                        </button>
+                                    </a>
+                                </div>
+                                <div className="col-md-6">
+                                    <NavLink to={"/detail"}>
+                                        <button className="btn fw-bold w-100 btn-outline-danger">
+                                            Add to cart
+                                        </button>
+                                    </NavLink>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <button
-                        className="carousel-control-prev"
-                        type="button"
-                        data-bs-target="#carouselExampleControls"
-                        data-bs-slide="prev"
-                    >
-                        <span className="carousel-control-prev-icon" aria-hidden="true"/>
-                        <span className="visually-hidden">Previous</span>
-                    </button>
-                    <button
-                        className="carousel-control-next"
-                        type="button"
-                        data-bs-target="#carouselExampleControls"
-                        data-bs-slide="next"
-                    >
-                        <span className="carousel-control-next-icon" aria-hidden="true"/>
-                        <span className="visually-hidden">Next</span>
-                    </button>
                 </div>
             </div>
+
             <div className="latest-products pt-5 pb-0">
                 <div className="container-xl">
                     <div className="section-tile row">
                         <div className="col-md-10 text-center mx-auto">
-                            <h1>New Products</h1>
-                            <p>Bicycle-Accessories</p>
+                            <h1>Similar product</h1>
                         </div>
                     </div>
                     <div className="row mt-5">
@@ -239,95 +220,10 @@ export function HomePages() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-4 col-md-4 mb-4">
-                            <div className="bg-white p-2 shadow-md">
-                                <div className="text-center">
-                                    <a href="detail.html">
-                                        <img
-                                            src="../../../../product/img_4.png"
-                                            alt=""
-                                        />
-                                    </a>
-                                </div>
-                                <div className="detail p-2">
-                                    <h4 className="mb-1 fs-5 fw-bold">ÁO ĐẠP XE DÀI TAY GIANT-NỈ</h4>
-                                    <b className="fs-4 text-danger">$44.00</b>
-                                    <s className="fs-5 ps-3">60.00</s>
-                                    <ul className="mt-0 vgth">
-                                        <li className="fs-8">
-                                            <i className="bi text-warning bi-star-fill"/>
-                                            <i className="bi text-warning bi-star-fill"/>
-                                            <i className="bi text-warning bi-star-fill"/>
-                                            <i className="bi text-warning bi-star-fill"/>
-                                            <i className="bi bi-star-fill"/>
-                                        </li>
-                                        <li className="float-end gvi">
-                                            <i className="bi text-danger bi-heart-fill"/>
-                                        </li>
-                                    </ul>
-                                    <div className="row pt-2">
-                                        <div className="col-md-6">
-                                            <a href="detail.html">
-                                                <button className="btn mb-2 fw-bold w-100 btn-danger">
-                                                    Rent Now
-                                                </button>
-                                            </a>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <button className="btn fw-bold w-100 btn-outline-danger">
-                                                Detail
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-4 mb-4">
-                            <div className="bg-white p-2 shadow-md">
-                                <div className="text-center">
-                                    <a href="detail.html">
-                                        <img
-                                            src="../../../../product/img_5.png"
-                                            alt=""
-                                        />
-                                    </a>
-                                </div>
-                                <div className="detail p-2">
-                                    <h4 className="mb-1 fs-5 fw-bold">KÍNH XE ĐẠP ĐỔI MÀU GIANT </h4>
-                                    <b className="fs-4 text-danger">$44.00</b>
-                                    <s className="fs-5 ps-3">60.00</s>
-                                    <ul className="mt-0 vgth">
-                                        <li className="fs-8">
-                                            <i className="bi text-warning bi-star-fill"/>
-                                            <i className="bi text-warning bi-star-fill"/>
-                                            <i className="bi text-warning bi-star-fill"/>
-                                            <i className="bi text-warning bi-star-fill"/>
-                                            <i className="bi bi-star-fill"/>
-                                        </li>
-                                        <li className="float-end gvi">
-                                            <i className="bi text-danger bi-heart-fill"/>
-                                        </li>
-                                    </ul>
-                                    <div className="row pt-2">
-                                        <div className="col-md-6">
-                                            <a href="detail.html">
-                                                <button className="btn mb-2 fw-bold w-100 btn-danger">
-                                                    Rent Now
-                                                </button>
-                                            </a>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <button className="btn fw-bold w-100 btn-outline-danger">
-                                                Detail
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
+
             <div className="popular-brands big-padding bg-white container-fluid">
                 <div className="container">
                     <div className="section-tile row">
@@ -359,9 +255,7 @@ export function HomePages() {
                     </div>
                 </div>
             </div>
-           <Footer/>
-
-        </>
-
+            <Footer/>
+        </div>
     )
 }
