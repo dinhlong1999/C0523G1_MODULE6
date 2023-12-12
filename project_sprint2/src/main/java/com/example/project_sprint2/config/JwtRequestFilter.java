@@ -1,6 +1,6 @@
 package com.example.project_sprint2.config;
 
-import com.example.project_sprint2.service.IAccountService;
+import com.example.project_sprint2.service.account.IAccountService;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

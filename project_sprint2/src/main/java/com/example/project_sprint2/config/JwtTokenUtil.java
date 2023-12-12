@@ -1,8 +1,7 @@
 package com.example.project_sprint2.config;
 
 import com.example.project_sprint2.model.Account;
-import com.example.project_sprint2.repository.IAccountRepository;
-import com.example.project_sprint2.service.IAccountService;
+import com.example.project_sprint2.service.account.IAccountService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

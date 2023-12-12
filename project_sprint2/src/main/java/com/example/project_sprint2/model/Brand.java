@@ -3,7 +3,7 @@ package com.example.project_sprint2.model;
 import javax.persistence.*;
 
 @Entity
-public class Category {
+public class Brand {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,16 +12,19 @@ public class Category {
     @Column(nullable = false)
     private String name;
 
-    @Column(name = "is_deleted", columnDefinition = "bit(1) default 0",nullable = false)
+    @Column(name = "is_deleted", nullable = false, columnDefinition = "bit(1) default 0")
     private boolean isDeleted;
+    @Column(nullable = false)
+    private String manufacturer;
 
-    public Category() {
+    public Brand() {
     }
 
-    public Category(Integer id, String name, boolean isDeleted) {
+    public Brand(Integer id, String name, boolean isDeleted, String manufacturer) {
         this.id = id;
         this.name = name;
         this.isDeleted = isDeleted;
+        this.manufacturer = manufacturer;
     }
 
     public Integer getId() {
@@ -46,5 +49,13 @@ public class Category {
 
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 }

@@ -3,7 +3,7 @@ package com.example.project_sprint2.controller.login;
 import com.example.project_sprint2.config.JwtTokenUtil;
 import com.example.project_sprint2.model.Account;
 import com.example.project_sprint2.model.JwtResponse;
-import com.example.project_sprint2.service.IAccountService;
+import com.example.project_sprint2.service.account.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

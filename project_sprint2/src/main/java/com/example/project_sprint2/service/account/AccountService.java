@@ -1,9 +1,9 @@
-package com.example.project_sprint2.service;
+package com.example.project_sprint2.service.account;
 
 import com.example.project_sprint2.dto.JwtResponseUserDetail;
 import com.example.project_sprint2.model.Account;
 import com.example.project_sprint2.model.Role;
-import com.example.project_sprint2.repository.IAccountRepository;
+import com.example.project_sprint2.repository.account.IAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class AccountService implements IAccountService{
+public class AccountService implements IAccountService {
 
     @Autowired
     private IAccountRepository accountRepository;

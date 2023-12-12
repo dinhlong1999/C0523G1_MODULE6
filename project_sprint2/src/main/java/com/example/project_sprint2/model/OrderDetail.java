@@ -1,16 +1,9 @@
 package com.example.project_sprint2.model;
 
 import javax.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Entity
-@Setter
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
 public class OrderDetail {
 
     @Id
@@ -34,4 +27,63 @@ public class OrderDetail {
     @JoinColumn(name = "order_id", referencedColumnName = "id", nullable = false)
     private OrderTable orderTable;
 
+    public OrderDetail() {
+    }
+
+    public OrderDetail(Integer id, Integer quantity, Double orderDetailPrice, boolean isDeleted, Product product, OrderTable orderTable) {
+        this.id = id;
+        this.quantity = quantity;
+        this.orderDetailPrice = orderDetailPrice;
+        this.isDeleted = isDeleted;
+        this.product = product;
+        this.orderTable = orderTable;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Double getOrderDetailPrice() {
+        return orderDetailPrice;
+    }
+
+    public void setOrderDetailPrice(Double orderDetailPrice) {
+        this.orderDetailPrice = orderDetailPrice;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public OrderTable getOrderTable() {
+        return orderTable;
+    }
+
+    public void setOrderTable(OrderTable orderTable) {
+        this.orderTable = orderTable;
+    }
 }
