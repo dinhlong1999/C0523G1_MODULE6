@@ -24,7 +24,7 @@ export function Detail() {
                                 <div className="col-md-6">
                                     <a href="detail.html">
                                         <button className="btn mb-2 fw-bold w-100 btn-danger">
-                                            Rent Now
+                                            Buy Now
                                         </button>
                                     </a>
                                 </div>

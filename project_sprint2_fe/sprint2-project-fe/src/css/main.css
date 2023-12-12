@@ -32,17 +32,19 @@
 	margin: 0px; 
 	padding: 0px; 
 	box-sizing: border-box;
+
 }
 
 body, html {
 	height: 100%;
 	font-family: Poppins-Regular, sans-serif;
+
+
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: Poppins-Regular;
-	font-size: 14px;
+	font-family: Serif;
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
@@ -68,10 +70,9 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p {
-	font-family: Poppins-Regular;
-	font-size: 14px;
+	font-family: Serif;
 	line-height: 1.7;
-	color: #666666;
+	color: black;
 	margin: 0px;
 }
 
@@ -82,10 +83,7 @@ ul, li {
 
 
 /*---------------------------------------------*/
-input {
-	outline: none;
-	border: none;
-}
+
 
 textarea {
   outline: none;
@@ -140,8 +138,8 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
 .txt1 {
-  font-family: Montserrat-SemiBold;
-  font-size: 16px;
+  font-family: Serif;
+  font-size: 20px;
   color: #555555;
   line-height: 1.5;
 }
@@ -313,7 +311,8 @@ iframe {
   color: #333333;
   line-height: 1.2;
   font-size: 18px;
-
+  border: 1px solid black;
+  border-radius: 10px;
   display: block;
   width: 100%;
   background: transparent;
@@ -528,4 +527,37 @@ iframe {
 }
 #px-5{
   margin-top: 1rem;
+}
+
+.input {
+  float: right;
+  margin-left: 5px;
+  border-radius: 5px;
+  width: 20%;
+  font-family: Serif;
+}
+
+.select {
+  float: right;
+  border-radius: 5px;
+  height: 34px;
+}
+h2 {
+  border: 1px solid;
+  font-family: Serif;
+  font-size: 50px;
+  margin-bottom: 1rem;
+  box-shadow: 10px 10px 20px #51504B;
+  width: 60%;
+  border-radius: 10px;
+  background-color: white;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 23%;
+}
+.inputQuantity{
+  width: 75%;
+  border-radius: 5px;
 }

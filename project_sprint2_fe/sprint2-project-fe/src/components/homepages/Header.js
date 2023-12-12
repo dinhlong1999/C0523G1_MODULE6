@@ -1,10 +1,40 @@
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import * as loginService from "../../service/loginService";
+import {LogoutConfirmModal} from "./LogoutConfirmModal";
 
 export function Header() {
+    const navigate = useNavigate();
+    const [userName, setUserName] = useState("");
+    const [isShowModal, setShowModal] = useState(false);
+    const [userLoginId, setUserLoginId] = useState("");
+    useEffect(() => {
+        getUserNameByJwt();
+        getIdByJwt();
+    }, [userName,isShowModal])
+
+    const getUserNameByJwt = async () => {
+        const result = await loginService.getAccessTokenUserName();
+        setUserName(result);
+    }
+    const getIdByJwt = async () =>{
+        const result = await  loginService.getAccessTokenId();
+        setUserLoginId(result);
+    }
+
+
+    const handleModal = async () => {
+        setShowModal(true);
+    }
+    const closeModal = async () => {
+        setShowModal(false);
+    }
 
 
     return (
         <header className="container-fluid bg-white">
+            <LogoutConfirmModal show={isShowModal}
+                                handleCloseFn={closeModal}/>
             <div className="header-top bg-gray  border-bottom">
                 <div className="container">
                     <div className="row">
@@ -18,33 +48,54 @@ export function Header() {
                                 </li>
                             </ul>
                         </div>
-                        <div className="col-md-4 d-flex align-items-end">
-                            <ul className="ms-auto d-inline-flex">
-                                <li className="p-2">
-                                    <NavLink to={"/login"}>
-                                        <button type={"button"} className="btn px-4 btn-outline-success ">Login</button>
-                                    </NavLink>
-                                </li>
-                                <li className="p-2">
-                                    <a target="_blank" href="">
-                                        <button className="btn px-4 btn-outline-danger">
-                                            Sign Up
-                                        </button>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        {userName ?
+                            (<div className="col-md-4 d-flex align-items-end" >
+
+                                <div className="btn-group" style={{paddingLeft:"50%"}}>
+                                    <button type="button" className="btn btn-outline-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {userName}
+                                    </button>
+                                    <ul className="dropdown-menu">
+                                        <li><a className="dropdown-item" href="#">Trang cá nhân</a></li>
+                                        <li><a className="dropdown-item" href="#">Lịch sử mua hàng</a></li>
+                                        <li>
+                                            <hr className="dropdown-divider"/>
+                                        </li>
+                                        <li><a className="dropdown-item" href="#" onClick={()=>handleModal()}>Đăng xuất</a></li>
+                                    </ul>
+                                </div>
+                            </div>)
+                            :
+                            (<div className="col-md-4 d-flex align-items-end" >
+                                <ul className="ms-auto d-inline-flex">
+                                    <li className="p-2">
+                                        <NavLink to={"/login"}>
+                                            <button type={"button"} className="btn px-4 btn-outline-success ">Đăng
+                                                nhập
+                                            </button>
+                                        </NavLink>
+                                    </li>
+                                    <li className="p-2">
+                                        <a target="_blank" href="">
+                                            <button className="btn px-4 btn-outline-danger">
+                                                Đăng kí
+                                            </button>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>)
+                        }
                     </div>
                 </div>
             </div>
             <div className="logo-contaienr p-2">
                 <div className="container">
-                    <div className="row">
+                    <div className="row" style={{alignItems: "center"}}>
                         <div className="col-md-3 col-9 pt-1 pb-2">
                             <NavLink to={"/"}>
                                 <img
                                     className="logo"
-                                    src="https://www.ngoisaoso.vn/uploads/news/2015/05/13/4-rent-bicycle-logo-design.jpg"
+                                    src="../../../images/img_1.png"
                                     alt=""
                                 />
                             </NavLink>
@@ -66,8 +117,8 @@ export function Header() {
               </span>
                             </div>
                         </div>
-                        <div className="col-md-3 col-3 pt-1 text-end">
-                            <NavLink to={"/order"}>
+                        {userName && ( <div className="col-md-3 col-3 pt-1 text-end">
+                            <NavLink to={`/order/${userLoginId}`}>
                                 <button
                                     type="button"
                                     className="btn btn-light shadow-md border position-relative"
@@ -79,17 +130,9 @@ export function Header() {
                 </span>
                                 </button>
                             </NavLink>
-                            <button
-                                type="button"
-                                className="btn d-none d-md-inline-block ms-3 btn-light shadow-md border position-relative"
-                            >
-                                <i className="bi fs-4 bi-heart"/>
-                                <span
-                                    className="position-absolute fs-6 top-0 start-100 translate-middle badge rounded-pill bg-warning">
-                2
-              </span>
-                            </button>
-                        </div>
+
+                        </div>)}
+
                     </div>
                 </div>
             </div>
@@ -107,7 +150,7 @@ export function Header() {
                             <i className="bi cp bi-list float-end fs-1 dmji"/>
                         </a>
                     </h6>
-                    <ul id="menu" className=" navcol fw-bold d-none d-md-inline-flex">
+                    <ul id="menu" className=" navcol fw-bold d-none d-md-inline-flex" style={{alignItems: "center"}}>
                         <li className="p-21 px-5">
                             <a className="text-white" href="">
                                 Page <i className="bi pt-2 bi-chevron-down"/>
@@ -118,45 +161,95 @@ export function Header() {
                                         <a href="index.html">Home</a>
                                     </li>
                                     <li>
-                                        <a href="about.html">About US</a>
+                                        <a href="about.html">Về chúng tôi</a>
                                     </li>
                                     <li>
-                                        <a href="contact.html">Contact US</a>
+                                        <a href="contact.html">Liên hệ</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li className="p-21 px-5">
+                        <li className="p-21 px-4">
+                            <NavLink to={"/product/1"} style={{color: "white"}}>
+                                Xe đạp <i className="bi pt-2 bi-chevron-down"/>
+                            </NavLink>
+                        </li>
+                        <li className="p-21 px-5" style={{color: "white"}}>
+                            Hãng xe <i className="bi pt-2 bi-chevron-down"/>
+                            <div className="inner-div">
+                                <ul className="">
+                                    <li>
+                                        <NavLink to={"/product/brand/1"}>
+                                            Giant
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to={"/product/brand/2"}>
+                                            Liv
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to={"/product/brand/3"}>
+                                            Galaxy
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to={"/product/brand/4"}>
+                                            Trek
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to={"/product/brand/5"}>
+                                            Twitter
+                                        </NavLink>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li className="p-21 px-4">
                             <a className="text-white" href="">
-                                Category <i className="bi pt-2 bi-chevron-down"/>
+                                Phụ tùng <i className="bi pt-2 bi-chevron-down"/>
                             </a>
                             <div className="inner-div">
                                 <ul className="">
                                     <li>
-                                        <a href="">Bicycle</a>
+                                        <NavLink to={"/product/1"}>
+                                            Ghi đông
+                                        </NavLink>
                                     </li>
                                     <li>
-                                        <a href="">Accessories</a>
+                                        <NavLink to={"/product/2"}>
+                                            Vành bánh xe
+                                        </NavLink>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li className="p-21 px-5">
+                        <li className="p-21 px-4">
                             <a className="text-white" href="">
-                                Manager <i className="bi pt-2 bi-chevron-down"/>
+                                Trang phục <i className="bi pt-2 bi-chevron-down"/>
+                            </a>
+                            <div className="inner-div">
+                                <ul className="">
+                                    <li>
+                                        <a href="index.html">Áo</a>
+                                    </li>
+                                    <li>
+                                        <a href="about.html">Quần</a>
+                                    </li>
+                                    <li>
+                                        <NavLink to={"/product/3"}>
+                                            Mũ bảo hiểm
+                                        </NavLink>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li className="p-21 px-4">
+                            <a className="text-white" href="">
+                                Quản lý <i className="bi pt-2 bi-chevron-down"/>
                             </a>
                         </li>
-                        <li className="p-21 px-5">
-                            <a className="text-white" href="">
-                                Personal <i className="bi pt-2 bi-chevron-down"/>
-                            </a>
-                        </li>
-                        <li className="p-21 px-5">
-                            <a className="text-white" href="">
-                                Purchase history <i className="bi pt-2 bi-chevron-down"/>
-                            </a>
-                        </li>
-
                     </ul>
                 </div>
             </div>

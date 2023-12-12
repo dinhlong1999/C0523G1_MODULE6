@@ -3,7 +3,7 @@ export function Footer() {
     return(
         <footer>
             <div className="inner">
-                <div className="container">
+                <div className="con tainer">
                     <div className="row">
                         <div className="col-md-3 foot-about">
                             <h4>About US</h4>
