@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api")
+@RequestMapping("/api/public")
 public class LoginController {
     @Autowired
     private AuthenticationManager authenticationManager;

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api/user/")
+@RequestMapping("/api/member/user/")
 public class UserRepository {
     @Autowired
     private IUserService userService;

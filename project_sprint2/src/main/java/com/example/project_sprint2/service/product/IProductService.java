@@ -16,4 +16,6 @@ public interface IProductService {
     Page<IProductDetailDTO> findAllProductByBrand(Pageable pageable,Integer id,
                                                   String categoryDetailName,
                                                   String productName);
+
+    void saveProduct(Product product);
 }

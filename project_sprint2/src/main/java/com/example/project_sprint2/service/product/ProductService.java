@@ -35,4 +35,9 @@ public class ProductService implements IProductService {
     public Page<IProductDetailDTO> findAllProductByBrand(Pageable pageable, Integer id, String categoryDetailName, String productName) {
         return productRepository.findAllProductByBrand(pageable,id,"%"+categoryDetailName+"%","%"+productName+"%");
     }
+
+    @Override
+    public void saveProduct(Product product) {
+        productRepository.save(product);
+    }
 }

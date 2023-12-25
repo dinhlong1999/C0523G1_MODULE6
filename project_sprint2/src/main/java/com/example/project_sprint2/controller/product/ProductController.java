@@ -1,7 +1,9 @@
 package com.example.project_sprint2.controller.product;
 
+import com.example.project_sprint2.dto.IOrderDetailDTO;
 import com.example.project_sprint2.dto.IProductDetailDTO;
 import com.example.project_sprint2.model.Product;
+import com.example.project_sprint2.service.orderService.IOrderDetailService;
 import com.example.project_sprint2.service.product.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,10 +17,12 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api/product")
+@RequestMapping("/api/public/product")
 public class ProductController {
     @Autowired
     private IProductService productService;
+    @Autowired
+    private IOrderDetailService orderDetailService;
 
     @GetMapping("/{id}")
     public ResponseEntity<Page<IProductDetailDTO>> getListProduct(@PathVariable Integer id,
@@ -57,6 +61,14 @@ public class ProductController {
        return new ResponseEntity<>(productBrandList,HttpStatus.OK);
    }
 
+    @GetMapping("/best-sellers")
+    public ResponseEntity<List<IOrderDetailDTO>> getProductBestSellers(){
+        List<IOrderDetailDTO> productBestSellersList = orderDetailService.getOrderDetail();
+        if (productBestSellersList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(productBestSellersList,HttpStatus.OK);
+    }
 
 
 }

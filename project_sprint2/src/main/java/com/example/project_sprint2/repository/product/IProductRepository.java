@@ -22,7 +22,7 @@ public interface IProductRepository extends JpaRepository<Product,Integer> {
             "join brand on brand.id = product.brand_id " +
             "join images on images.product_id = product.id " +
             "where category_detail.`name` like :categoryDetailName and product.`name` like :productName " +
-            "group by product_id",nativeQuery = true)
+            "group by product_id order by product.import_date desc",nativeQuery = true)
     Page<IProductDetailDTO> findAllProduct(Pageable pageable, @Param("id") Integer id,
                                            @Param("categoryDetailName") String categoryDetailName,
                                            @Param("productName") String productName);
@@ -36,7 +36,8 @@ public interface IProductRepository extends JpaRepository<Product,Integer> {
             "                       join brand on brand.id = product.brand_id" +
             "                       join images on images.product_id = product.id" +
             "                       where datediff(CURDATE(),product.import_date) < 45" +
-            "                       group by product_id",nativeQuery = true)
+            "                       group by product_id" +
+            "                       order by product.import_date desc ",nativeQuery = true)
     List<IProductDetailDTO> findAllNewProduct();
 
     @Query(value = "select product.id as productId, product.`name` as productName,product.price as productPrice," +
@@ -49,7 +50,7 @@ public interface IProductRepository extends JpaRepository<Product,Integer> {
             "join brand on brand.id = product.brand_id and brand.id = :id " +
             "join images on images.product_id = product.id  " +
             "where category_detail.`name` like :categoryDetailName and product.`name` like :productName " +
-            "group by product_id",nativeQuery = true)
+            "group by product_id order by product.import_date desc",nativeQuery = true)
     Page<IProductDetailDTO> findAllProductByBrand(Pageable pageable,@Param("id") int id,
                                                                     @Param("categoryDetailName") String categoryDetailName,
                                                                     @Param("productName") String productName);
