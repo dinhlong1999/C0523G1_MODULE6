@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:8080/api/category-detail/"
+const URL = "http://localhost:8080/api/public/category-detail/"
 
 export const getAllCategoryDetailById = async (id) => {
     try {

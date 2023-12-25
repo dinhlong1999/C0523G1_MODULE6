@@ -1,11 +1,17 @@
 import * as brandService from "../../service/brandService"
 import * as categoryDetailService from "../../service/categoryDetailService"
 import {useEffect, useState} from "react";
-import {NavLink, useParams} from "react-router-dom";
+import {NavLink, useNavigate, useParams} from "react-router-dom";
 import {getAllProductByBrand} from "../../service/brandService";
 import {Header} from "../homepages/Header";
 import {Footer} from "../homepages/Footer";
-
+import * as userService from "../../service/userService"
+import * as cartService from "../../service/cartService";
+import {toast} from "react-toastify";
+import {getAll} from "../redux/middleaware/CartMiddleaware";
+import {useDispatch} from "react-redux";
+import * as loginService from "../../service/loginService";
+import * as productService from "../../service/productService";
 export function BrandList() {
     const {id} = useParams();
     const [productList, setProductList] = useState([]);
@@ -15,10 +21,14 @@ export function BrandList() {
     const [totalPages, setTotalPages] = useState(0);
     const [refresh, setRefresh] = useState(true);
     const [categoryDetails, setCategoryDetail] = useState([])
-
+    const [user, setUser] = useState();
+    const dispatch = useDispatch();
+    const idLogin = loginService.getAccessTokenId();
+    const navigate = useNavigate();
     useEffect(() => {
         getProductByBrandId();
         getAllCategoryDetail();
+        getUserByAccountId();
     }, [id,refresh,productName,categoryDetailName]);
 
     const getAllCategoryDetail = async () => {
@@ -43,14 +53,65 @@ export function BrandList() {
         setRefresh((refresh) => !refresh);
     }
 
+    const getUserByAccountId = async () => {
+        const result = await userService.getUserByAccountId(idLogin);
+        if (result) {
+            setUser(result.data);
+        }
+
+    }
+
+    const addToCart = async (productId) => {
+        if (idLogin) {
+            const result = await cartService.getCardByProductIdAndUserId(productId, user.id);
+            if (result.status === 204) {
+                let value = {quantity: 1, productId: productId, userId: user.id}
+                const res = await cartService.addToCart(value);
+                console.log(res)
+                if (res.status === 201) {
+                    toast.success("Đã thêm vào giỏ hàng");
+                    dispatch(getAll(user.id));
+                } else {
+                    toast.error("Thất bại")
+                }
+            } else {
+                const data = await productService.getProductDetail(productId);
+                console.log(productId)
+                if (result.data.quantity < data.data.quantity ){
+                    let value = {
+                        id: result.data.id,
+                        quantity: result.data.quantity + 1,
+                        productId: productId,
+                        userId: user.id
+                    }
+                    console.log(value)
+                    const request = await cartService.addToCart(value);
+                    console.log(request)
+                    if (request.status === 201) {
+                        toast.success("Đã thêm vào giỏ hàng");
+                        dispatch(getAll(user.id));
+                    } else {
+                        toast.error("Thất bại")
+                    }
+                } else {
+                toast.error("Sản phẩm đã có trong giỏ hàng, vượt quá hàng tồn kho.")
+            }
+
+            }
+
+        } else {
+            navigate("/login")
+        }
+    }
+
     return (
         <>
             <Header/>
             <div className="latest-products pt-3 pb-0">
                 <div className="container-xl">
                     <div className="section-tile row">
-                        <div className="col-md-10 text-center mx-auto">
-                            <h2>Brand</h2>
+                        <div style={{display:"flex",justifyContent:"center"}} className="col-md-10 text-center mx-auto">
+                            <h2 className={"shadow-md"}>Thương hiệu</h2>
                         </div>
                     </div>
                     <input type={"text"} className={"input"} placeholder="Nhập tên sản phẩm cần tìm"
@@ -65,12 +126,16 @@ export function BrandList() {
                         {productList ? (<>
                             {productList.map((item,index) =>
                                 <div key={index} className="col-lg-4 col-md-4 mb-4">
-                                    <div className="bg-white p-2 shadow-md" style={{whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>
+                                    <div className="bg-white p-2 shadow-md card" style={{whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}}>
                                         <div className="text-center">
                                             <img src={item.images} alt=""/>
                                         </div>
                                         <div className="detail p-2">
-                                            <h4 className="mb-1 fs-5 fw-bold">{item.productName}</h4>
+                                            <h4 className="mb-1 fs-5 fw-bold"
+                                                style={{textAlign: "center"}}>{item.productName}</h4>
+                                            <div className="mb-1 fs-5 ">Thương Hiệu : {item.brandName}</div>
+                                            {item.productQuantity > 0 ? (<div style={{color: "red"}}>Còn hàng</div>) : (
+                                                <div style={{color: "red"}}>Hết hàng</div>)}
                                             <b className="fs-4 text-danger">{ new Intl.NumberFormat('vi-VN', {
                                                 style: 'currency',
                                                 currency: 'VND',
@@ -79,30 +144,17 @@ export function BrandList() {
                                                 style: 'currency',
                                                 currency: 'VND',
                                             }).format(item.productPrice)}</s>
-                                            <ul className="mt-0 vgth">
-                                                <li className="fs-8">
-                                                    <i className="bi text-warning bi-star-fill"/>
-                                                    <i className="bi text-warning bi-star-fill"/>
-                                                    <i className="bi text-warning bi-star-fill"/>
-                                                    <i className="bi text-warning bi-star-fill"/>
-                                                    <i className="bi bi-star-fill"/>
-                                                </li>
-                                                <li className="float-end gvi">
-                                                    <i className="bi text-danger bi-heart-fill"/>
-                                                </li>
-                                            </ul>
+
                                             <div className="row pt-2">
                                                 <div className="col-md-6">
-                                                    <a href="detail.html">
-                                                        <button className="btn mb-2 fw-bold w-100 btn-danger">
-                                                            Thêm vào giỏ hàng
+                                                        <button className="btn mb-2 fw-bold w-100 btn-danger" onClick={()=>addToCart(item.productId)}>
+                                                            Thêm vào giỏ  <i className="fa-solid fa-cart-shopping"></i>
                                                         </button>
-                                                    </a>
                                                 </div>
                                                 <div className="col-md-6">
                                                     <NavLink to={`/product/detail/${item.productId}`}>
                                                         <button className="btn fw-bold w-100 btn-outline-danger">
-                                                            Mua ngay
+                                                            Chi tiết <i className="fa-solid fa-circle-info"></i>
                                                         </button>
                                                     </NavLink>
                                                 </div>

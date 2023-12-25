@@ -1,7 +1,7 @@
 import axios from "axios";
 import {jwtDecode} from "jwt-decode";
 
-export const URL_LOGIN = "http://localhost:8080/api/"
+export const URL_LOGIN = "http://localhost:8080/api/public/"
 
 export const login = async (account) => {
     try {
@@ -18,7 +18,7 @@ export const addAccessToken = async (jwt) => {
     }
 }
 
-export const getAccessTokenUserName = async () =>{
+export const getAccessTokenUserName =  () =>{
     const jwt = localStorage.getItem("jwt")
     if (jwt){
         return jwtDecode(jwt).sub
@@ -26,7 +26,7 @@ export const getAccessTokenUserName = async () =>{
         return null;
     }
 }
-export const getAccessTokenId = async () =>{
+export const getAccessTokenId =  () =>{
     const jwt = localStorage.getItem("jwt")
     if (jwt){
         return jwtDecode(jwt).id
@@ -36,4 +36,21 @@ export const getAccessTokenId = async () =>{
 }
 export const handleLogout = async () =>{
     localStorage.removeItem("jwt")
+}
+
+export const getRole = () => {
+    const jwt = localStorage.getItem("jwt")
+    if (jwt){
+        return jwtDecode(jwt).role || []
+    }else{
+        return null
+    }
+}
+export const getAccessToken = async () =>{
+    const jwt = localStorage.getItem("jwt");
+    if (jwt){
+        return jwtDecode(jwt);
+    }else {
+        return null
+    }
 }

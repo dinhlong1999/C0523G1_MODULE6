@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const URL_USER = "http://localhost:8080/api/user/"
+const URL_USER = "http://localhost:8080/api/member/user/"
+
 
 export const getUserByAccountId = async (id) => {
     try {

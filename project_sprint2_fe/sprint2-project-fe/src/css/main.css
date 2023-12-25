@@ -529,25 +529,47 @@ iframe {
   margin-top: 1rem;
 }
 
+/*.input {*/
+/*  float: right;*/
+/*  margin-left: 5px;*/
+/*  border-radius: 5px;*/
+/*  width: 20%;*/
+/*  font-family: Serif;*/
+/*}*/
 .input {
+  border: none;
+  outline: none;
+  border-radius: 15px;
+  padding: 3px;
+  background-color: #ccc;
+  box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+  transition: 300ms ease-in-out;
   float: right;
-  margin-left: 5px;
-  border-radius: 5px;
-  width: 20%;
-  font-family: Serif;
+
+
+}
+
+.input:focus {
+  background-color: white;
+  transform: scale(1.05);
+  box-shadow: 13px 13px 100px #969696,
+  -13px -13px 100px #ffffff;
 }
 
 .select {
+  background-color: #ccc;
   float: right;
-  border-radius: 5px;
-  height: 34px;
+  border-radius: 15px;
+  height: 1.9rem;
+  margin-right: 10px;
+  box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+  transition: 300ms ease-in-out;
 }
 h2 {
   border: 1px solid;
   font-family: Serif;
   font-size: 50px;
   margin-bottom: 1rem;
-  box-shadow: 10px 10px 20px #51504B;
   width: 60%;
   border-radius: 10px;
   background-color: white;
@@ -555,9 +577,80 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 23%;
 }
 .inputQuantity{
   width: 75%;
   border-radius: 5px;
 }
+
+
+.Btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: #dc3545;
+}
+
+/* plus sign */
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign svg {
+  width: 17px;
+}
+
+.sign svg path {
+  fill: white;
+}
+/* text */
+.text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 0.8rem;
+  transition-duration: .3s;
+}
+/* hover effect on button width */
+.Btn:hover {
+  width: 125px;
+  border-radius: 40px;
+  transition-duration: .3s;
+}
+
+.Btn:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 20px;
+}
+/* hover effect button's text */
+.Btn:hover .text {
+  opacity: 1;
+  width: 80%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+/* button click effect*/
+.Btn:active {
+  transform: translate(2px ,2px);
+}
+  th,td{
+    text-align: center;
+
+  }
+

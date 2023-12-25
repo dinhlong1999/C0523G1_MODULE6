@@ -1,89 +1,62 @@
 export function Footer() {
 
-    return(
+    return (
         <footer>
             <div className="inner">
                 <div className="con tainer">
                     <div className="row">
-                        <div className="col-md-3 foot-about">
-                            <h4>About US</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                                hendrerit libero pellentesque libero interdum, id mattis felis
-                                dictum. Praesent eget lacus tempor justo efficitur malesuada. Cras
-                                ut suscipit nisi.
-                            </p>
-                            <ul>
-                                <li>23 Rose Stren Melbourn</li>
-                                <li>sales@smarteyeapps.com</li>
-                                <li>+91 876 766 554</li>
-                            </ul>
+                        <div className="col-md-3 foot-post">
+                            <h4>Liên hệ chúng tôi</h4>
+                            <div className="post-row">
+                                <div className="detail">
+                                    <span>Pedal Paradise Store</span>
+                                </div>
+                            </div>
+                            <div className="post-row">
+                                <div className="detail">
+                                    <span>Địa chỉ: 04 Nguyễn Giản Thanh, P.An Khê, Q.Thanh Khê, TP.Đà Nẵng</span>
+                                </div>
+                            </div>
+                            <div className="post-row">
+                                <div className="detail">
+                                    <span>Số điện thoại: 0932533481</span>
+                                </div>
+                            </div>
                         </div>
                         <div className="col-md-3 foot-post">
-                            <h4>Latest Posts</h4>
+                            <h4>Hỗ trợ 24/7 </h4>
                             <div className="post-row">
-                                <div className="image">
-                                    <img src="assets/images/blog/1.jpg" alt=""/>
-                                </div>
                                 <div className="detail ps-2">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                                        hendrerit{" "}
-                                    </p>
+                                    <span>Hỗ trợ 24H/ngày và 7ngày/tuần</span>
                                 </div>
                             </div>
                             <div className="post-row">
-                                <div className="image">
-                                    <img src="assets/images/blog/7.jpg" alt=""/>
-                                </div>
                                 <div className="detail p-2">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                                        hendrerit{" "}
-                                    </p>
+                                    <span>Gỉai đáp những thắc mắc của khách hàng</span>
                                 </div>
                             </div>
-                            <div className="post-row">
-                                <div className="image">
-                                    <img src="assets/images/blog/6.jpg" alt=""/>
-                                </div>
-                                <div className="detail ps-2">
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-                                        hendrerit{" "}
-                                    </p>
-                                </div>
-                            </div>
+
                         </div>
                         <div className="col-md-3 foot-services">
-                            <h4>Top Category</h4>
+                            <h4>Tuyển dụng</h4>
                             <ul>
                                 <li>
-                                    <a href="">Target Statergy</a>
+                                    Quy trình tuyển dụng
                                 </li>
                                 <li>
-                                    <a href="">Web Analytics</a>
+                                    Vị trí tuyển dụng
                                 </li>
                                 <li>
-                                    <a href="">Page Monitering</a>
+                                    Ứng tuyển ngay
                                 </li>
                                 <li>
-                                    <a href="">Page Optimization</a>
-                                </li>
-                                <li>
-                                    <a href="">Target Statergy</a>
-                                </li>
-                                <li>
-                                    <a href="">Email Marketing</a>
+                                    Tại sao bạn lại chọn Pedal Paradise Store
                                 </li>
                             </ul>
                         </div>
                         <div className="col-md-3 foot-news">
-                            <h4>News Letter</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                                justo neque, vehicula eget eros.{" "}
-                            </p>
+                            <h4>Phản hồi</h4>
+                            Hãy để lại góp ý để chúng tôi phục vụ tốt hơn
                             <div className="input-group mb-3">
                                 <input
                                     type="text"

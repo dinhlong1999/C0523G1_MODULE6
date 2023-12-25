@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const URL_HOME = "http://localhost:8080/api/home";
+export const URL_HOME = "http://localhost:8080/api/public/home";
 
 export const getProductNew = async () => {
     try {

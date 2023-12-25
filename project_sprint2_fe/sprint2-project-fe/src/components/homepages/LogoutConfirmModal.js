@@ -31,11 +31,11 @@ export function LogoutConfirmModal(events) {
                             <p>Bạn có chắc chắn muốn đăng xuất?</p>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"
+                            <button type="button" className="btn btn-outline-dark" data-bs-dismiss="modal"
                                     onClick={handleCloseFn}>Quay lại
                             </button>
-                            <button type="button" className="btn btn-primary"
-                                    style={{backgroundColor: "#9D66C3"}} onClick={() => handleLogoutFn()}>Đăng xuất
+                            <button type="button" className="btn btn-outline-danger"
+                                     onClick={() => handleLogoutFn()}>Đăng xuất
                             </button>
                         </div>
                     </div>
