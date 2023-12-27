@@ -116,7 +116,7 @@ export function Header() {
                                             data-bs-toggle="dropdown" aria-expanded="false">
                                         {user.name}
                                     </button>
-                                    <ul className="dropdown-menu">
+            o                        <ul className="dropdown-menu">
                                         <NavLink to={"/history"}>
                                             <li className="dropdown-item">Lịch sử mua hàng</li>
                                         </NavLink>

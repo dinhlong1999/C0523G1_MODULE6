@@ -1,0 +1,6 @@
+Khi đăng nhập vào hệ thống :
+-Với admin:+ Khi đăng nhập vào : có thể check những khách hàng đang thuê, đã thuê, lịch sử ->>>>> thống kê
+	   + CRUD sản phẩm
+-Với user: +Khi đăng nhập vào hệ thống: xem lịch sử những hợp đồng đã thuê, 
+	   +Vào xem một số sản phẩm
+	   +Chọn vào giỏ hàng : 
