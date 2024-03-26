@@ -1,0 +1,16 @@
+chức năng số 8:
+-b1: Đăng nhập vào kiểm tra, 
+   + Test kiểm tra xem admin hay là user
+	*Admin: Thì câu query full 
+		Câu query: ....
+
+	*User:Lấy id employee Thì câu query sẽ không kèm Tên đăng nhập và tên nhân viên, không được xem đơn của người khác
+		Câu query: ... sẽ không có tìm 2 field là tên đăng nhập và tên nhân viên và kèm theo id account
+
+
+Validate thời gian:
+date_start : phải nhỏ hơn ngày hiện tại
+date_end: phải lớn hơn ngày ngày date_start,
+Nếu lớn hơn ngày hiện tại, thì đơn hàng đã đặt hàng
+Còn nhỏ hơnn ngày hiện tại, thì đơn hàng đã phân bổ.
+

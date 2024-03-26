@@ -654,3 +654,20 @@ h2 {
 
   }
 
+.marquee-container {
+  overflow: hidden;
+}
+
+.marquee-content {
+  white-space: nowrap;
+  animation: marquee 10s linear infinite; /* Điều chỉnh độ dài và tốc độ của marquee ở đây */
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

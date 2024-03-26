@@ -1,0 +1,4 @@
+cách để update một object từ back end len front end :
+Xác định endpoint sẽ xử lý chức năng cập nhật, và sử dụng phương thức put is used update object and create request from front end and sent to endpoint to update and provide data of object need to update, usually represented as json
+send request from front end to back end 
+Handle request at the back end, after finished processing succcesful. back end will return to front end status code HTTP 200 or OK to know that it has been processed successfully. From there, the front end relies on the status code to notify user.

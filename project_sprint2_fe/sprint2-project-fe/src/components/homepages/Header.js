@@ -62,14 +62,23 @@ export function Header() {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-8">
-                            <ul className="d-inline-flex pt-0 pt-md-2 fs-6">
-                                <li className="p-2 ">
-                                    <i className="bi bi-envelope"/> long1110dn@gmail.com
-                                </li>
-                                <li className="p-2 d-none d-md-block">
-                                    <i className="bi bi-headphones"/> 0932533481
-                                </li>
-                            </ul>
+                            <div className="row">
+                                <ul className="d-inline-flex pt-0 pt-md-2 fs-6">
+                                    <li className="p-2 col-md-4">
+                                        <i className="bi bi-envelope"/> long1110dn@gmail.com
+                                    </li>
+                                    <li className="p-2 d-none d-md-block col-md-3">
+                                        <i className="bi bi-headphones"/> 0932533481
+                                    </li>
+                                    <li className="p-2 d-none d-md-block col-md-5">
+                                        <div className="marquee-container">
+                                            <div className="marquee-content">
+                                               Cam kết chất lượng sản phẩm chính hãng
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -86,10 +95,7 @@ export function Header() {
                                 />
                             </NavLink>
                         </div>
-                        {/*<div className="col-md-5 d-non  e d-md-block pt-2">*/}
-                        {/*    <input type="text" autoComplete="off" name="text" className="input" placeholder="Tìm kiếm"*/}
-                        {/*           style={{width: "100%", padding: "0.5rem"}}/>*/}
-                        {/*</div>*/}
+
                         <div className="col-md-5">
 
                         </div>
@@ -116,7 +122,7 @@ export function Header() {
                                             data-bs-toggle="dropdown" aria-expanded="false">
                                         {user.name}
                                     </button>
-            o                        <ul className="dropdown-menu">
+                                    <ul className="dropdown-menu">
                                         <NavLink to={"/history"}>
                                             <li className="dropdown-item">Lịch sử mua hàng</li>
                                         </NavLink>
@@ -148,13 +154,13 @@ export function Header() {
                                             </button>
                                         </NavLink>
                                     </li>
-                                    <li className="p-2">
-                                        <a target="_blank" href="">
-                                            <button className="btn px-4 btn-outline-danger">
-                                                Đăng kí
-                                            </button>
-                                        </a>
-                                    </li>
+                                    {/*<li className="p-2">*/}
+                                    {/*    <a target="_blank" href="">*/}
+                                    {/*        <button className="btn px-4 btn-outline-danger">*/}
+                                    {/*            Đăng kí*/}
+                                    {/*        </button>*/}
+                                    {/*    </a>*/}
+                                    {/*</li>*/}
                                 </ul>
                             </div>)
                         }

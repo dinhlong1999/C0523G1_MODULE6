@@ -1,0 +1,35 @@
+initialize : khởi tạo
+define : xác định
+redefinite : xác định lại 
+scope: phạm vi
+instead : thay vào đó
+which is : đó là
+externally : bên ngoài
+regardless : bất kể
+execution  thực thi 
+built-in : tích hợp sẵn
+vulnerabilities : lỗ hỏng
+distort : sai lệch
+exploit: khai thác
+thereby: từ cách đó
+strange : lạ lùng
+approach: tiếp cận
+mechanism : cơ chế 
+previous : trước đó
+existed: tồn tại 
+optimization : tối ưu hoá
+traversing: duyệt qua
+redundant : Dư thừa
+simultaneously: Đồng thời
+belong: thuộc về
+withstand: chịu 
+pressure: áp lực
+ability: khả năng 
+strength: điểm mạnh
+weakness: điểm yếu.
+wrap : bao bọc
+exceed: vượt quá
+eventual: cuối cùng
+completion : sự hoàn thành
+computations: sự tính toán
+associate: kết hợp

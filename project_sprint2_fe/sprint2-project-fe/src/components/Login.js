@@ -59,15 +59,6 @@ export function Login() {
                     className="container-login100">
                     <div className="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
                         <h1 className="login100-form-title ">Đăng nhập</h1>
-                        {/*<a href="#" className="btn-face m-b-20">*/}
-                        {/*    <i className="fa fa-facebook-official" />*/}
-                        {/*    Facebook*/}
-                        {/*</a>*/}
-                        {/*<a href="#" className="btn-google m-b-20">*/}
-                        {/*    <img src="https://i.pinimg.com/736x/74/65/f3/7465f30319191e2729668875e7a557f2.jpg" alt="GOOGLE"/>*/}
-                        {/*    Google*/}
-                        {/*</a>*/}
-
                         <Formik initialValues={initValue} onSubmit={(value) => login(value)}
                                 validationSchema={yup.object(validate)}>
                             <Form>
